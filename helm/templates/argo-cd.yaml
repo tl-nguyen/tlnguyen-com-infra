@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tooling
-  namespace: tooling
+  name: argo-cd
+  namespace: argo-cd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
-  source:
-    path: helm
-    repoURL: https://github.com/tl-nguyen/tlnguyen-com-infra.git
-    targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
-    namespace: tooling
+    namespace: argo-cd
+  project: default
+  source:
+    path: helm/charts/argo-cd
+    repoURL: https://github.com/tl-nguyen/tlnguyen-com-infra.git
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
