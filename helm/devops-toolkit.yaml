@@ -1,8 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tooling
-  namespace: tooling
+  name: devops-toolkit
+  namespace: devops-toolkit
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -12,8 +12,8 @@ spec:
     repoURL: https://github.com/tl-nguyen/tlnguyen-com-infra.git
     targetRevision: HEAD
   destination:
+    namespace: devops-toolkit
     server: https://kubernetes.default.svc
-    namespace: tooling
   syncPolicy:
     automated:
       prune: true
