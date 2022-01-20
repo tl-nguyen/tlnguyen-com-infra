@@ -10,7 +10,7 @@ terraform -chdir=./terraform apply
 ```
 ```shell
 helm upgrade --install argo-cd helm/charts/argo-cd \
---create-namespace --namespace toolkit
+--create-namespace --namespace argocd
 ```
 ```shell
 kubectl apply -f helm/root.yaml 
@@ -18,7 +18,7 @@ kubectl apply -f helm/root.yaml
 
 ```shell
 kubectl get secret argocd-initial-admin-secret \
---namespace toolkit \
+--namespace argocd \
 --output jsonpath="{.data.password}" \
 | base64 -d
 
