@@ -27,6 +27,21 @@ kubectl port-forward svc/argo-cd-argocd-server 8080:443 -n toolkit
 open http://127.0.0.1:8080
 ```
 
+Generating a secret example
+```shell
+kubectl --namespace argocd create secret generic linode-token \
+--dry-run=client \
+--from-literal \
+linode-token=[..] \
+--output json \
+| kubeseal \
+--controller-name=sealed-secrets \
+--controller-namespace=argocd -o yaml \
+| tee linode-token.yaml
+
+```
+
+
 ```shell
 terraform -chdir=./terraform destroy
 ```
