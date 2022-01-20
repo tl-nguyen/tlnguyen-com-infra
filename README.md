@@ -15,9 +15,16 @@ helm upgrade --install argo-cd helm/charts/argo-cd \
 ```shell
 kubectl apply -f helm/root.yaml 
 ```
+
 ```shell
-kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
+kubectl get secret argocd-initial-admin-secret \
+--namespace argocd \
+--output jsonpath="{.data.password}" \
+| base64 -d
+
 kubectl port-forward svc/argo-cd-argocd-server 8080:443 -n argocd
+
+open http://127.0.0.1:8080
 ```
 
 ```shell
