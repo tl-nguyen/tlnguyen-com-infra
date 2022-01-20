@@ -10,7 +10,7 @@ terraform -chdir=./terraform apply
 ```
 ```shell
 helm upgrade --install argo-cd helm/charts/argo-cd \
---create-namespace --namespace argocd
+--create-namespace --namespace toolkit
 ```
 ```shell
 kubectl apply -f helm/root.yaml 
@@ -18,11 +18,11 @@ kubectl apply -f helm/root.yaml
 
 ```shell
 kubectl get secret argocd-initial-admin-secret \
---namespace argocd \
+--namespace toolkit \
 --output jsonpath="{.data.password}" \
 | base64 -d
 
-kubectl port-forward svc/argo-cd-argocd-server 8080:443 -n argocd
+kubectl port-forward svc/argo-cd-argocd-server 8080:443 -n toolkit
 
 open http://127.0.0.1:8080
 ```

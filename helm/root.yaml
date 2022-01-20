@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: root
-  namespace: argocd
+  namespace: toolkit
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -12,7 +12,7 @@ spec:
     repoURL: https://github.com/tl-nguyen/tlnguyen-com-infra.git
     targetRevision: HEAD
   destination:
-    namespace: argocd
+    namespace: toolkit
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
