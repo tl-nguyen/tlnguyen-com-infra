@@ -2,6 +2,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
+  annotations:
+    kubernetes.io/ingress.class: contour-external
+    ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   rules:
     - host: argocd.tlnguyen.com
@@ -11,6 +14,6 @@ spec:
             pathType: Exact
             backend:
               service:
-                name: argo-cd-argocd-server
+                name: argocd-server
                 port:
                   number: 80
