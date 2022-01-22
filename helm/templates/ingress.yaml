@@ -2,9 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
-  annotations:
-    kubernetes.io/ingress.class: contour-external
-    ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   rules:
     - host: argocd.tlnguyen.com
