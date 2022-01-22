@@ -1,8 +1,14 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress
+  name: argocd
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
+  tls:
+    - secretName: argocd.tlnguyen.com
+      hosts:
+        - argocd.tlnguyen.com
   rules:
     - host: argocd.tlnguyen.com
       http:
