@@ -9,5 +9,7 @@ spec:
         paths:
           - path: /
             backend:
-              serviceName: argo-cd-argocd-server
-              servicePort: 80
+              service:
+                name: argo-cd-argocd-server
+                port:
+                  number: 80
