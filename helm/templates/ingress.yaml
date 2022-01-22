@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  rules:
+    - host: argocd.tlnguyen.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: argo-cd-argocd-server
+              servicePort: 80
