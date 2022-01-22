@@ -7,9 +7,9 @@ spec:
     - host: argocd.tlnguyen.com
       http:
         paths:
-          - path: /
-            backend:
-              service:
-                name: argo-cd-argocd-server
-                port:
-                  number: 80
+        - path: /
+          backend:
+            service:
+              name: argo-cd-argocd-server
+              port:
+                number: 80
