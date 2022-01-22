@@ -41,7 +41,7 @@ open http://127.0.0.1:8080
 ```shell
 kubectl --namespace argocd create secret generic linode-token \
 --dry-run=client \
---from-literal linode-token=$TF_VAR_token \
+--from-literal linode_api_token=$TF_VAR_token \
 --output yaml \
 | kubeseal \
 --controller-name=sealed-secrets \
