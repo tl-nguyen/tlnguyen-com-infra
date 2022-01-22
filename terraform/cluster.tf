@@ -5,7 +5,7 @@ resource "linode_lke_cluster" "lke_cluster" {
   tags        = ["prod"]
 
   pool {
-    type  = "g6-standard-1"
+    type  = "g6-standard-2"
     count = 1
 
     autoscaler {
