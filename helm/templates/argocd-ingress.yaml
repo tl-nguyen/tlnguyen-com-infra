@@ -6,9 +6,9 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
   tls:
-    - secretName: argocd.tlnguyen.com
-      hosts:
-        - argocd.tlnguyen.com
+    - hosts:
+      - argocd.tlnguyen.com
+      secretName: argocd.tlnguyen.com
   rules:
     - host: argocd.tlnguyen.com
       http:
