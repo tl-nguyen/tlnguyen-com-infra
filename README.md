@@ -37,6 +37,12 @@ kubectl port-forward svc/argo-cd-argocd-server 8080:443 \
 
 open http://127.0.0.1:8080
 ```
+### Traefik port forwarding
+```shell
+kubectl port-forward $(kubectl get pods --selector "app.kubernetes.io/name=traefik" --output=name) 9000:9000
+
+open http://127.0.0.1:9000/dashboard/#/
+```
 ### Example for Generating a Sealed Secret resource
 ```shell
 kubectl --namespace argocd create secret generic linode-token \

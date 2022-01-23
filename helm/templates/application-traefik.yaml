@@ -22,8 +22,6 @@ spec:
           kubernetesIngress:
             publishedService:
               enabled: true
-        dashboard:
-          enabled: true
     repoURL: https://helm.traefik.io/traefik
     targetRevision: 10.9.1
   syncPolicy:
