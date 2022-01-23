@@ -10,7 +10,7 @@ spec:
 #    - hosts:
 #      - argocd.tlnguyen.com
 #      secretName: argocd.tlnguyen.com
-#  ingressClassName: traefik
+  ingressClassName: traefik
   rules:
     - host: argocd.tlnguyen.com
       http:
