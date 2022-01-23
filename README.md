@@ -1,3 +1,5 @@
+# tlnguyen.com infrastructure code
+
 ## Manual steps for provisioning/destroying the Linode Kubernetes cluster
 ### Prerequisites
 - terraform cli - https://learn.hashicorp.com/tutorials/terraform/install-cli
@@ -25,6 +27,12 @@ helm upgrade --install argo-cd helm/charts/argo-cd \
 ```shell 
 kubectl apply -f helm/root.yaml 
 ```
+### Destroy cluster
+```shell
+terraform -chdir=./terraform destroy
+```
+---
+## Useful commands
 ### ArgoCD login password and port forwarding
 ```shell
 kubectl get secret argocd-initial-admin-secret \
@@ -37,7 +45,7 @@ kubectl port-forward svc/argo-cd-argocd-server 8080:443 \
 
 open http://127.0.0.1:8080
 ```
-### Traefik port forwarding
+### Traefik dashboard port forwarding
 ```shell
 kubectl port-forward $(kubectl get pods --selector "app.kubernetes.io/name=traefik" --output=name) 9000:9000
 
@@ -54,8 +62,4 @@ kubectl --namespace argocd create secret generic linode-token \
 --controller-namespace=argocd \
 -o yaml \
 | tee sealedsecret-linode-token.yaml
-```
-### Destroy cluster
-```shell
-terraform -chdir=./terraform destroy
 ```
