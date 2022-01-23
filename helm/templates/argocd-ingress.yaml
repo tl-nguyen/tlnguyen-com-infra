@@ -6,10 +6,10 @@ metadata:
 #  annotations:
 #    cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
-#  tls:
-#    - hosts:
-#      - argocd.tlnguyen.com
-#      secretName: argocd.tlnguyen.com
+  tls:
+    - hosts:
+      - argocd.tlnguyen.com
+      secretName: argocd.tlnguyen.com
   rules:
     - host: argocd.tlnguyen.com
       http:
