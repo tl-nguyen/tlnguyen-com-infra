@@ -47,7 +47,7 @@ kubectl --namespace argocd create secret generic linode-token \
 --controller-name=sealed-secrets \
 --controller-namespace=argocd \
 -o yaml \
-| tee linode-token.yaml
+| tee sealedsecret-linode-token.yaml
 ```
 ### Destroy cluster
 ```shell
