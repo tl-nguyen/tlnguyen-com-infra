@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo
+  name: argocd-image-updater
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: argocd
   project: default
   source:
-    path: tlnguyen-com-demo
-    repoURL: https://github.com/tl-nguyen/tlnguyen-com-demo-deployment.git
-    targetRevision: HEAD
+    chart: argocd-image-updater
+    repoURL: https://argoproj.github.io/argo-helm
+    targetRevision: 0.6.1
   syncPolicy:
     automated:
       prune: true

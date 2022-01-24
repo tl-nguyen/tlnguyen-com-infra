@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: tlnguyen-com-demo=tlnguyen/tlnguyen-com-demo
+    argocd-image-updater.argoproj.io/tlnguyen-com-demo.update-strategy: latest
+    argocd-image-updater.argoproj.io/tlnguyen-com-demo.ignore-tags: latest, main
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
+    argocd-image-updater.argoproj.io/git-branch: main
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  project: default
+  source:
+    path: tlnguyen-com-demo
+    repoURL: https://github.com/tl-nguyen/tlnguyen-com-demo-deployment.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
